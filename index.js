@@ -4,6 +4,16 @@ spanResultado = document.querySelector('span');
 
 botoes.forEach(botao => {
     botao.addEventListener('click', () => {
+        if (botao.classList.contains('num')){
+            if (spanResultado.innerHTML === '0' || spanResultado.innerHTML === operacao){
+                spanResultado.innerHTML = botao.innerHTML;
+            } else {
+                spanResultado.innerHTML = spanResultado.innerHTML + botao.innerHTML;
+            }
+        }
+        if (botao.classList.contains('decimal')){
+            spanResultado.innerHTML = spanResultado.innerHTML + '.';
+        }
         if (botao.classList.contains('calculadora__botoes-operador')){
             numeroAnterior = parseFloat(spanResultado.innerHTML);
             spanResultado.innerHTML = botao.innerHTML;      
@@ -16,9 +26,6 @@ botoes.forEach(botao => {
             } else if(spanResultado.innerHTML === '÷'){
                 operacao = '÷';
             }
-        }
-        if (botao.classList.contains('decimal')){
-            spanResultado.innerHTML = spanResultado.innerHTML + '.';
         }
         numeroAtual = parseFloat(spanResultado.innerHTML);
         if (botao.classList.contains('resultado')){
@@ -44,13 +51,6 @@ botoes.forEach(botao => {
         }
         if (botao.classList.contains('limpar')){
             spanResultado.innerHTML = 0;
-        }
-        if (botao.classList.contains('num')){
-            if (spanResultado.innerHTML === '0' || spanResultado.innerHTML === operacao){
-                spanResultado.innerHTML = botao.innerHTML;
-            } else {
-                spanResultado.innerHTML = spanResultado.innerHTML + botao.innerHTML;
-            }
         }
     })
 })
